@@ -8,6 +8,8 @@
  * the A Modes are for arduinos on i2c which I intended to use for driving the accessories but the more I think about it the more I hate that Idea
  * I mean do I really need a mega and 2 arduino nanos? Probably not :P SO Ill probably just use the mega outputs
  * Ill still need the A modes because of how accessories will work (#HotSwap :D)
+ * This initial comment thing is getting really long isnt it?
+ * Also, Fair warning I really suck at commenting, So, if you don't understand something, message me or file a complaint or something, just do the thing
  */
 
 int ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, ch10, ch11, ch12; //Define Integers for RC Remote
