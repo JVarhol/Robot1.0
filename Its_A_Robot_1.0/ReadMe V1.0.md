@@ -7,6 +7,7 @@ I Stole some of the code for driving the motors because I honestly had no idea w
 Thanks to Dr Rainer Hessmer for the motor driving code (and Schematics!) 
 Very well documented see it here http://www.hessmer.org/blog/2013/12/28/ibt-2-h-bridge-with-arduino/
 I started setting some stuff up to use with the remote but Im not 100% sure how I am going to integrate it so I will get there when it comes in
+Thanks to Nick Poole at sparkfun for his tutorial on how to integrate RC controlers and arduinos find it here: www.Sparkfun.com/tutorials/348
 I am a coding noob, so I probably did some stuff wrong, but if its wrong and works is it wrong?
 the A Modes are for arduinos on i2c which I intended to use for driving the accessories but the more I think about it the more I hate that Idea
 I mean do I really need a mega and 2 arduino nanos? Probably not :P SO Ill probably just use the mega outputs

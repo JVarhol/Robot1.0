@@ -44,6 +44,8 @@ void loop() {
   if (button == 12) {
     hLights();
   }
+  remoteStatus(); // If im checking the remote status Ill want to do it in real time, I put it in a fuction
+  // Because it will commented out most of the time
 }
 
 
@@ -100,6 +102,7 @@ void statusCheck() {   //Just a simple function that reports the Status of every
   if (mSpeedL == 0) {
     mSpeedLC = mSpeedL;
   }
+
   Serial.println(mSpeedLC);
   button = 0;
   return;
@@ -144,7 +147,7 @@ void motor2()  //Controls the Left Motor
   Serial.println("Select Left Motor Speed");
   button = 0;
   while (button == 0) {
-    buttonSet(); //Check Buttonpad to see if theres input
+    // buttonSet(); //Check Buttonpad to see if theres input
     if (button > 0) {
       mSpeedL = map(button, 1, 16, 0, 1023);
     }
@@ -171,23 +174,68 @@ void motor2()  //Controls the Left Motor
   button = 0;
   return;
 }
-void hLights() { 
-  if (hLightState < 1) // Just makes it so I can do On/Off with 1 Button, Neat huh?
-  hLightState = 1000; //Sets Brightness to 100%
+void hLights() {
+  if (hLightState < 1){ // Just makes it so I can do On/Off with 1 Button, Neat huh?
+    hLightState = 1000; //Sets Brightness to 100%
   Serial.println("Lights: On");  //Honestly My serial prints are basically my comments, I mean just read those :D
-}
-else {
+} else {
   hLightState = 0;
-    Serial.println("Lights: Off");
+  Serial.println("Lights: Off");
 }
 analogWrite(headLights, hLightState);
 button = 0;
 delay(bWait);
 return;
 }
+
+
+void remoteCheck() {
+
+  ch1 = pulseIn(31, HIGH, 25000);
+  ch2 = pulseIn(33, HIGH, 25000);
+  ch3 = pulseIn(35, HIGH, 25000);
+  ch4 = pulseIn(37, HIGH, 25000);
+  ch5 = pulseIn(39, HIGH, 25000);
+  ch6 = pulseIn(41, HIGH, 25000);
+  ch7 = pulseIn(43, HIGH, 25000);
+  ch8 = pulseIn(45, HIGH, 25000);
+  ch9 = pulseIn(47, HIGH, 25000);
+  ch10 = pulseIn(49, HIGH, 25000);
+  ch11 = pulseIn(51, HIGH, 25000);
+  ch12 = pulseIn(53, HIGH, 25000);
+
+  return;
+}
+void remoteStatus() {
+  Serial.print("Channel 1:"); // Print the value of
+  Serial.println(ch1);        // each channel
+  Serial.print("Channel 2:");
+  Serial.println(ch2);
+  Serial.print("Channel 3:");
+  Serial.println(ch3);
+  Serial.print("Channel 4:");
+  Serial.println(ch4);
+  Serial.print("Channel 5:");
+  Serial.println(ch5);
+  Serial.print("Channel 6:");
+  Serial.println(ch6);
+  Serial.print("Channel 7:");
+  Serial.println(ch7);
+  Serial.print("Channel 8:");
+  Serial.println(ch8);
+  Serial.print("Channel 9:");
+  Serial.println(ch9);
+  Serial.print("Channel 10:");
+  Serial.println(ch10);
+  Serial.print("Channel 11:");
+  Serial.println(ch11);
+  Serial.print("Channel 12:");
+  Serial.println(ch12);
+                 return;
+}
 void buttonSet() {  //Analog pad cant easily be mapped from 0,1023 to 1,16 so I had to make this..... Yea......
-// On a side note I got this 16 button pad, works on 3 wires, its super amazing, especially for prototyping and testing
-// Yea, I have conversations in my code, deal with it B)   (Also I use Emojis :D)
+  // On a side note I got this 16 button pad, works on 3 wires, its super amazing, especially for prototyping and testing
+  // Yea, I have conversations in my code, deal with it B)   (Also I use Emojis :D)
   buttonPad = analogRead(sensorPin);
   while (buttonPad > 100) {
     if (buttonPad > 230 && buttonPad < 246) {
